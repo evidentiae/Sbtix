@@ -65,8 +65,8 @@ let sbtTemplate = repoDefs: versioning:
   mergeSbtTemplates = templates: runCommand "merge-sbt-template" {}
         (let
             copyTemplate = template:
-                [ "cp -rns ${template}/ivy $out"
-                  "cp -rns ${template}/sbt $out"
+                [ "cp -rns --remove-destination ${template}/ivy $out"
+                  "cp -rns --remove-destination ${template}/sbt $out"
                   "chmod -R u+rw $out"
                 ];
         in
